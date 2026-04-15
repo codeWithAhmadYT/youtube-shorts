@@ -1,0 +1,63 @@
+<!-- https://youtube.com/shorts/gkyGoBSl1OY -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Cards by @codeWithAhmadYT</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black flex items-center justify-center h-screen gap-6 flex-wrap">
+
+  <div class="group w-48 h-60 rounded-3xl bg-gradient-to-br from-violet-500 to-fuchsia-500 p-px cursor-pointer" id="c1">
+    <div class="w-full h-full rounded-3xl bg-gradient-to-br from-violet-600 to-fuchsia-600 flex flex-col items-start justify-between p-5 transition-all duration-200 group-hover:from-violet-500 group-hover:to-fuchsia-400">
+      <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div>
+        <p class="text-white/60 text-xs mb-1">Total Revenue</p>
+        <p class="text-white font-bold text-2xl">$84,200</p>
+        <span class="text-emerald-300 text-xs bg-white/10 px-2 py-0.5 rounded-full mt-1 inline-block">+12.4% this month</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="group w-48 h-60 rounded-3xl bg-gradient-to-br from-cyan-400 to-blue-500 p-px cursor-pointer" id="c2">
+    <div class="w-full h-full rounded-3xl bg-gradient-to-br from-cyan-500 to-blue-600 flex flex-col items-start justify-between p-5 transition-all duration-200 group-hover:from-cyan-400 group-hover:to-blue-500">
+      <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div>
+        <p class="text-white/60 text-xs mb-1">Active Users</p>
+        <p class="text-white font-bold text-2xl">24,380</p>
+        <span class="text-emerald-300 text-xs bg-white/10 px-2 py-0.5 rounded-full mt-1 inline-block">+3.1% this week</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="group w-48 h-60 rounded-3xl bg-gradient-to-br from-orange-400 to-rose-500 p-px cursor-pointer" id="c3">
+    <div class="w-full h-full rounded-3xl bg-gradient-to-br from-orange-500 to-rose-600 flex flex-col items-start justify-between p-5 transition-all duration-200 group-hover:from-orange-400 group-hover:to-rose-500">
+      <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+      </div>
+      <div>
+        <p class="text-white/60 text-xs mb-1">Conversion Rate</p>
+        <p class="text-white font-bold text-2xl">5.67%</p>
+        <span class="text-rose-200 text-xs bg-white/10 px-2 py-0.5 rounded-full mt-1 inline-block">-0.3% vs last week</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('[id^="c"]').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const {left, top, width, height} = card.getBoundingClientRect();
+        const x = ((e.clientX - left) / width - 0.5) * 24;
+        const y = ((e.clientY - top) / height - 0.5) * -24;
+        card.style.transform = `perspective(600px) rotateX(${y}deg) rotateY(${x}deg) scale(1.06)`;
+      });
+      card.addEventListener('mouseleave', () => card.style.transform = '');
+    });
+  </script>
+</body>
+</html>
