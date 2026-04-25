@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahmad Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans">
+  <div class="max-w-md mx-auto px-4 pt-5 pb-28 space-y-4">
+    <section id="home" class="scroll-mt-24">
+      <div class="glass rounded-3xl p-5">
+        <p class="text-xs uppercase tracking-[0.25em] text-white/50">Portfolio</p>
+        <h1 class="text-2xl font-semibold mt-2">Code with Ahmad </h1>
+        <p class="text-sm text-white/70 mt-1">Full Stack Developer</p>
+        <p class="text-sm text-white/60 mt-4 leading-6">
+         I am a full stack developer with a passion for creating beautiful and functional web applications.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="px-3 py-1 rounded-full bg-white/10 text-xs">Django</span>
+          <span class="px-3 py-1 rounded-full bg-white/10 text-xs">Next.js</span>
+          <span class="px-3 py-1 rounded-full bg-white/10 text-xs">AI Integration</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="scroll-mt-24">
+      <div class="glass rounded-3xl p-5">
+        <h2 class="text-sm uppercase tracking-[0.2em] text-white/60 mb-4">Tech Skills</h2>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="rounded-2xl bg-white/5 border border-white/5 p-4">
+            <p class="text-sm font-medium">Frontend</p>
+            <p class="text-xs text-white/60 mt-2">Tailwind, Typescript, Next.js</p>
+          </div>
+
+          <div class="rounded-2xl bg-white/5 border border-white/5 p-4">
+            <p class="text-sm font-medium">Backend</p>
+            <p class="text-xs text-white/60 mt-2">Django, Python, PostgreSQL</p>
+          </div>
+
+          <div class="rounded-2xl bg-white/5 border border-white/5 p-4">
+            <p class="text-sm font-medium">AI Integration</p>
+            <p class="text-xs text-white/60 mt-2">OpenAI, Anthropic, Google Gemini</p>
+          </div>
+
+          <div class="rounded-2xl bg-white/5 border border-white/5 p-4">
+            <p class="text-sm font-medium">Deployment</p>
+            <p class="text-xs text-white/60 mt-2">Vercel, AWS, Digital Ocean</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="scroll-mt-24">
+      <div class="glass rounded-3xl p-5">
+        <h2 class="text-sm uppercase tracking-[0.2em] text-white/60 mb-4">Projects</h2>
+
+        <div class="space-y-3">
+          <div class="rounded-2xl bg-white/5 border border-white/5 p-4">
+            <h3 class="text-sm font-medium">CodeReviewAI</h3>
+            <p class="text-xs text-white/60 mt-2">
+              A web application that uses AI to review code and provide feedback.
+            </p>
+          </div>
+
+          <div class="rounded-2xl bg-white/5 border border-white/5 p-4">
+            <h3 class="text-sm font-medium">Django Blog</h3>
+            <p class="text-xs text-white/60 mt-2">
+              A blog application built with Django.
+            </p>
+          </div>
+
+          <div class="rounded-2xl bg-white/5 border border-white/5 p-4">
+            <h3 class="text-sm font-medium">Next.js Portfolio</h3>
+            <p class="text-xs text-white/60 mt-2">
+              A portfolio website built with Next.js.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="scroll-mt-24">
+      <div class="glass rounded-3xl p-5">
+        <h2 class="text-sm uppercase tracking-[0.2em] text-white/60 mb-4">Contact</h2>
+
+        <div class="space-y-3 text-sm text-white/75">
+          <p>Email: example@test.com</p>
+          <p>GitHub: github.com/codeWithAhmadYT</p>
+          <p>Location: Global</p>
+        </div>
+
+        <button class="mt-5 w-full rounded-2xl bg-white/10 border border-white/10 py-3 text-sm font-medium hover:bg-white/15 transition">
+          Let's Work Together
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-md z-50">
+    <div class="nav-glass rounded-2xl p-2">
+      <div class="grid grid-cols-4 gap-2 text-xs">
+        <a href="#home" class="nav-link active text-center rounded-xl py-3 text-white/70 transition">Home</a>
+        <a href="#skills" class="nav-link text-center rounded-xl py-3 text-white/70 transition">Skills</a>
+        <a href="#projects" class="nav-link text-center rounded-xl py-3 text-white/70 transition">Projects</a>
+        <a href="#contact" class="nav-link text-center rounded-xl py-3 text-white/70 transition">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const links = document.querySelectorAll(".nav-link");
+    const sections = document.querySelectorAll("section");
+
+    links.forEach(link => {
+      link.addEventListener("click", () => {
+        links.forEach(item => item.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          links.forEach(link => {
+            link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+          });
+        }
+      });
+    }, {
+      threshold: 0.45
+    });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
