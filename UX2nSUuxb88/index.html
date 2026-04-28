@@ -1,0 +1,233 @@
+ <!-- https://youtube.com/shorts/UX2nSUuxb88 --> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dev Stack</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet">
+<style>
+  body { font-family: 'Fira Code', monospace; }
+  .stack { perspective: 1100px; }
+  .card  { position:absolute; inset:0; transform-style:preserve-3d; transition:transform .5s cubic-bezier(.25,1,.35,1), opacity .5s, filter .5s; cursor:pointer; }
+  .face  { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+  .back  { transform:rotateY(180deg); }
+  .card.flipped { transform:rotateY(180deg) !important; }
+  .card.drag    { transition:none !important; }
+  .icon  { animation:float 3s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+  [data-p="a"]  { z-index:10; transform:translateX(0)     scale(1)    rotateY(0deg);    opacity:1;   filter:brightness(1);   }
+  [data-p="n1"] { z-index:9;  transform:translateX(24px)  scale(.95)  rotateY(-5deg);   opacity:.9;  filter:brightness(.85); }
+  [data-p="n2"] { z-index:8;  transform:translateX(46px)  scale(.9)   rotateY(-10deg);  opacity:.55; filter:brightness(.7);  }
+  [data-p="n3"] { z-index:7;  transform:translateX(64px)  scale(.85)  rotateY(-14deg);  opacity:.25; filter:brightness(.55); }
+  [data-p="p1"] { z-index:9;  transform:translateX(-24px) scale(.95)  rotateY(5deg);    opacity:.9;  filter:brightness(.85); }
+  [data-p="p2"] { z-index:8;  transform:translateX(-46px) scale(.9)   rotateY(10deg);   opacity:.55; filter:brightness(.7);  }
+  [data-p="p3"] { z-index:7;  transform:translateX(-64px) scale(.85)  rotateY(14deg);   opacity:.25; filter:brightness(.55); }
+  [data-p="x"]  { z-index:1;  transform:scale(.8);                                       opacity:0;   pointer-events:none;    }
+</style>
+</head>
+<body class="bg-[#080b12] min-h-screen flex items-center justify-center p-6 select-none text-slate-100">
+
+<div class="w-full max-w-sm">
+
+  <div class="mb-7">
+    <p class="text-xs text-slate-500 tracking-widest">@codeWithAhmadYT</p>
+    <p class="text-xs text-slate-700 mt-1">//Subscribe for daily content</p>
+  </div>
+
+  <div class="stack relative w-full" style="height:430px" id="stack">
+
+    <!-- 0: React / Frontend -->
+    <div class="card rounded-2xl" data-c="0">
+      <div class="face rounded-2xl p-7 flex flex-col" style="background:linear-gradient(145deg,#1a0e40,#2e1b6e,#4a1fa0);border:1px solid rgba(147,112,255,.3)">
+        <div class="flex justify-between items-center mb-5">
+          <span class="text-[11px] tracking-widest uppercase bg-white/10 text-white/60 px-3 py-1 rounded-full">Frontend</span>
+          <button class="flip-btn w-8 h-8 rounded-full bg-white/10 border border-white/10 text-white/60 flex items-center justify-center hover:bg-white/20 transition-colors">
+            <i class="fa-solid fa-rotate-right text-xs"></i>
+          </button>
+        </div>
+        <i class="icon fa-brands fa-react text-6xl text-center my-auto mb-4" style="color:#61dafb;filter:drop-shadow(0 0 16px #61dafb)"></i>
+        <h2 class="text-2xl font-bold text-white">React &amp; UI</h2>
+        <p class="text-xs text-white/50 mt-2 leading-relaxed flex-1">Component-driven interfaces with modern React, TypeScript and Tailwind.</p>
+      </div>
+      <div class="face back rounded-2xl p-7 flex flex-col bg-[#0e1120]" style="border:1px solid rgba(255,255,255,.08)">
+        <div class="flex justify-between items-center mb-5">
+          <p class="text-xs text-slate-500">// <span class="text-slate-200">React stack</span></p>
+          <button class="flip-btn w-8 h-8 rounded-full bg-white/10 border border-white/10 text-white/60 flex items-center justify-center hover:bg-white/20 transition-colors"><i class="fa-solid fa-xmark text-xs"></i></button>
+        </div>
+        <ul class="flex flex-col gap-4 flex-1 justify-center text-sm text-slate-300">
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>React 18 concurrent features</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>TypeScript strict mode</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>Tailwind CSS + shadcn/ui</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>Vite for instant HMR</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 1: Node / Backend -->
+    <div class="card rounded-2xl" data-c="1">
+      <div class="face rounded-2xl p-7 flex flex-col" style="background:linear-gradient(145deg,#0a1f30,#0f3550,#0d5c8a);border:1px solid rgba(56,189,248,.25)">
+        <div class="flex justify-between items-center mb-5">
+          <span class="text-[11px] tracking-widest uppercase bg-white/10 text-white/60 px-3 py-1 rounded-full">Backend</span>
+          <button class="flip-btn w-8 h-8 rounded-full bg-white/10 border border-white/10 text-white/60 flex items-center justify-center hover:bg-white/20 transition-colors"><i class="fa-solid fa-rotate-right text-xs"></i></button>
+        </div>
+        <i class="icon fa-brands fa-node-js text-6xl text-center my-auto mb-4" style="color:#68a063;filter:drop-shadow(0 0 16px #68a063)"></i>
+        <h2 class="text-2xl font-bold text-white">Node.js APIs</h2>
+        <p class="text-xs text-white/50 mt-2 leading-relaxed flex-1">Scalable server-side apps with Express, REST and GraphQL.</p>
+      </div>
+      <div class="face back rounded-2xl p-7 flex flex-col bg-[#0e1120]" style="border:1px solid rgba(255,255,255,.08)">
+        <div class="flex justify-between items-center mb-5">
+          <p class="text-xs text-slate-500">// <span class="text-slate-200">Node stack</span></p>
+          <button class="flip-btn w-8 h-8 rounded-full bg-white/10 border border-white/10 text-white/60 flex items-center justify-center hover:bg-white/20 transition-colors"><i class="fa-solid fa-xmark text-xs"></i></button>
+        </div>
+        <ul class="flex flex-col gap-4 flex-1 justify-center text-sm text-slate-300">
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>Express.js &amp; Fastify</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>REST &amp; GraphQL APIs</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>JWT authentication</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>Rate limiting &amp; caching</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2: Database -->
+    <div class="card rounded-2xl" data-c="2">
+      <div class="face rounded-2xl p-7 flex flex-col" style="background:linear-gradient(145deg,#0f2318,#163a22,#1a5c30);border:1px solid rgba(74,222,128,.25)">
+        <div class="flex justify-between items-center mb-5">
+          <span class="text-[11px] tracking-widest uppercase bg-white/10 text-white/60 px-3 py-1 rounded-full">Database</span>
+          <button class="flip-btn w-8 h-8 rounded-full bg-white/10 border border-white/10 text-white/60 flex items-center justify-center hover:bg-white/20 transition-colors"><i class="fa-solid fa-rotate-right text-xs"></i></button>
+        </div>
+        <i class="icon fa-solid fa-database text-6xl text-center my-auto mb-4" style="color:#4ade80;filter:drop-shadow(0 0 16px #4ade80)"></i>
+        <h2 class="text-2xl font-bold text-white">Data Layer</h2>
+        <p class="text-xs text-white/50 mt-2 leading-relaxed flex-1">PostgreSQL, Redis caching and modern ORM patterns.</p>
+      </div>
+      <div class="face back rounded-2xl p-7 flex flex-col bg-[#0e1120]" style="border:1px solid rgba(255,255,255,.08)">
+        <div class="flex justify-between items-center mb-5">
+          <p class="text-xs text-slate-500">// <span class="text-slate-200">Data stack</span></p>
+          <button class="flip-btn w-8 h-8 rounded-full bg-white/10 border border-white/10 text-white/60 flex items-center justify-center hover:bg-white/20 transition-colors"><i class="fa-solid fa-xmark text-xs"></i></button>
+        </div>
+        <ul class="flex flex-col gap-4 flex-1 justify-center text-sm text-slate-300">
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>PostgreSQL &amp; MySQL</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>Redis for caching</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>Prisma ORM</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>Schema migrations</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3: DevOps -->
+    <div class="card rounded-2xl" data-c="3">
+      <div class="face rounded-2xl p-7 flex flex-col" style="background:linear-gradient(145deg,#1f1008,#3a1e0a,#5c3010);border:1px solid rgba(251,146,60,.25)">
+        <div class="flex justify-between items-center mb-5">
+          <span class="text-[11px] tracking-widest uppercase bg-white/10 text-white/60 px-3 py-1 rounded-full">DevOps</span>
+          <button class="flip-btn w-8 h-8 rounded-full bg-white/10 border border-white/10 text-white/60 flex items-center justify-center hover:bg-white/20 transition-colors"><i class="fa-solid fa-rotate-right text-xs"></i></button>
+        </div>
+        <i class="icon fa-brands fa-docker text-6xl text-center my-auto mb-4" style="color:#2496ed;filter:drop-shadow(0 0 16px #2496ed)"></i>
+        <h2 class="text-2xl font-bold text-white">Docker &amp; CI/CD</h2>
+        <p class="text-xs text-white/50 mt-2 leading-relaxed flex-1">Containerised deployments with automated pipelines and infra as code.</p>
+      </div>
+      <div class="face back rounded-2xl p-7 flex flex-col bg-[#0e1120]" style="border:1px solid rgba(255,255,255,.08)">
+        <div class="flex justify-between items-center mb-5">
+          <p class="text-xs text-slate-500">// <span class="text-slate-200">Ops stack</span></p>
+          <button class="flip-btn w-8 h-8 rounded-full bg-white/10 border border-white/10 text-white/60 flex items-center justify-center hover:bg-white/20 transition-colors"><i class="fa-solid fa-xmark text-xs"></i></button>
+        </div>
+        <ul class="flex flex-col gap-4 flex-1 justify-center text-sm text-slate-300">
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>Docker &amp; Kubernetes</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>GitHub Actions CI/CD</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>AWS / GCP deployment</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>Terraform infrastructure</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4: Security -->
+    <div class="card rounded-2xl" data-c="4">
+      <div class="face rounded-2xl p-7 flex flex-col" style="background:linear-gradient(145deg,#200a1a,#3a0f28,#5c1238);border:1px solid rgba(244,114,182,.25)">
+        <div class="flex justify-between items-center mb-5">
+          <span class="text-[11px] tracking-widest uppercase bg-white/10 text-white/60 px-3 py-1 rounded-full">Security</span>
+          <button class="flip-btn w-8 h-8 rounded-full bg-white/10 border border-white/10 text-white/60 flex items-center justify-center hover:bg-white/20 transition-colors"><i class="fa-solid fa-rotate-right text-xs"></i></button>
+        </div>
+        <i class="icon fa-solid fa-shield-halved text-6xl text-center my-auto mb-4" style="color:#f472b6;filter:drop-shadow(0 0 16px #f472b6)"></i>
+        <h2 class="text-2xl font-bold text-white">Auth &amp; Security</h2>
+        <p class="text-xs text-white/50 mt-2 leading-relaxed flex-1">Zero-trust architecture, OAuth 2.0 and end-to-end encryption.</p>
+      </div>
+      <div class="face back rounded-2xl p-7 flex flex-col bg-[#0e1120]" style="border:1px solid rgba(255,255,255,.08)">
+        <div class="flex justify-between items-center mb-5">
+          <p class="text-xs text-slate-500">// <span class="text-slate-200">Security stack</span></p>
+          <button class="flip-btn w-8 h-8 rounded-full bg-white/10 border border-white/10 text-white/60 flex items-center justify-center hover:bg-white/20 transition-colors"><i class="fa-solid fa-xmark text-xs"></i></button>
+        </div>
+        <ul class="flex flex-col gap-4 flex-1 justify-center text-sm text-slate-300">
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>OAuth 2.0 &amp; OpenID</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>HTTPS &amp; TLS 1.3</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>OWASP best practices</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>Secret management</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 5: AI -->
+    <div class="card rounded-2xl" data-c="5">
+      <div class="face rounded-2xl p-7 flex flex-col" style="background:linear-gradient(145deg,#0a1e20,#0f3438,#0d5558);border:1px solid rgba(45,212,191,.25)">
+        <div class="flex justify-between items-center mb-5">
+          <span class="text-[11px] tracking-widest uppercase bg-white/10 text-white/60 px-3 py-1 rounded-full">AI / ML</span>
+          <button class="flip-btn w-8 h-8 rounded-full bg-white/10 border border-white/10 text-white/60 flex items-center justify-center hover:bg-white/20 transition-colors"><i class="fa-solid fa-rotate-right text-xs"></i></button>
+        </div>
+        <i class="icon fa-solid fa-brain text-6xl text-center my-auto mb-4" style="color:#2dd4bf;filter:drop-shadow(0 0 16px #2dd4bf)"></i>
+        <h2 class="text-2xl font-bold text-white">AI Integration</h2>
+        <p class="text-xs text-white/50 mt-2 leading-relaxed flex-1">Embed LLMs, vector search and ML pipelines into your product.</p>
+      </div>
+      <div class="face back rounded-2xl p-7 flex flex-col bg-[#0e1120]" style="border:1px solid rgba(255,255,255,.08)">
+        <div class="flex justify-between items-center mb-5">
+          <p class="text-xs text-slate-500">// <span class="text-slate-200">AI stack</span></p>
+          <button class="flip-btn w-8 h-8 rounded-full bg-white/10 border border-white/10 text-white/60 flex items-center justify-center hover:bg-white/20 transition-colors"><i class="fa-solid fa-xmark text-xs"></i></button>
+        </div>
+        <ul class="flex flex-col gap-4 flex-1 justify-center text-sm text-slate-300">
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>OpenAI &amp; Anthropic APIs</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>Pinecone / pgvector</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>LangChain pipelines</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-slate-600 text-xs w-3"></i>Fine-tuning &amp; embeddings</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="flex items-center justify-between mt-6">
+    <button id="prev" class="text-xs px-5 py-2 rounded-full border border-slate-800 bg-slate-900 text-slate-400 hover:bg-slate-800 transition-colors disabled:opacity-25 disabled:cursor-not-allowed">prev</button>
+    <div id="dots" class="flex gap-2 items-center"></div>
+    <button id="next" class="text-xs px-5 py-2 rounded-full border border-slate-800 bg-slate-900 text-slate-400 hover:bg-slate-800 transition-colors disabled:opacity-25 disabled:cursor-not-allowed">next</button>
+  </div>
+
+</div>
+
+<script>
+const cards=[...document.querySelectorAll('.card')],dotsEl=document.getElementById('dots');
+cards.forEach(()=>dotsEl.insertAdjacentHTML('beforeend','<div class="rounded-full bg-slate-700 transition-all duration-300" style="width:6px;height:6px"></div>'));
+const dots=[...dotsEl.children],prev=document.getElementById('prev'),next=document.getElementById('next');
+let cur=0,busy=false,dx=null;
+const P=d=>d===0?'a':d===1?'n1':d===2?'n2':d>=3?'n3':d===-1?'p1':d===-2?'p2':'p3';
+function render(){
+  cards.forEach((c,i)=>{c.dataset.p=P(i-cur);c.style.cssText='';});
+  dots.forEach((d,i)=>{d.style.width=d.style.height=i===cur?'10px':'6px';d.style.background=i===cur?'#fff':'#334155';});
+  prev.disabled=cur===0;next.disabled=cur===cards.length-1;
+}
+function go(d){if(busy||cur+d<0||cur+d>=cards.length)return;busy=true;cur+=d;render();setTimeout(()=>busy=false,520);}
+prev.onclick=()=>go(-1);next.onclick=()=>go(1);
+document.querySelectorAll('.flip-btn').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();b.closest('.card').classList.toggle('flipped');}));
+cards.forEach((c,i)=>c.addEventListener('click',()=>{if(c.dataset.p!=='a'&&!busy){busy=true;cur=i;render();setTimeout(()=>busy=false,520);}}));
+const stack=document.getElementById('stack');
+const dS=x=>{if(!busy){dx=x;cards[cur].classList.add('drag');}};
+const dM=x=>{if(dx===null)return;const d=x-dx;cards[cur].style.transform=`translateX(${d}px) rotateZ(${d*.05}deg)`;cards[cur].style.opacity=1-Math.min(Math.abs(d)/380,.45);};
+const dE=x=>{if(dx===null)return;const d=x-dx;cards[cur].classList.remove('drag');cards[cur].style.cssText='';dx=null;if(Math.abs(d)>55)go(d<0?1:-1);};
+stack.addEventListener('mousedown',e=>dS(e.clientX));
+document.addEventListener('mousemove',e=>{if(dx!==null)dM(e.clientX);});
+document.addEventListener('mouseup',e=>{if(dx!==null)dE(e.clientX);});
+stack.addEventListener('touchstart',e=>dS(e.touches[0].clientX),{passive:true});
+stack.addEventListener('touchmove',e=>{if(dx!==null)dM(e.touches[0].clientX);},{passive:true});
+stack.addEventListener('touchend',e=>{if(dx!==null)dE(e.changedTouches[0].clientX);});
+render();
+</script>
+</body>
+</html>
